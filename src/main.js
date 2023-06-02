@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         Tag Everyone
+// @name         User Mention Tools
 // @description  Function used to tag everyone in a group on WhatsApp
-// @version      0.1
+// @version      1.0
 // @author       Daniel Idalgo
 // @match        https://web.whatsapp.com/
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=web.whatsapp.com
