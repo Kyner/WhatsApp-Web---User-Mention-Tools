@@ -59,9 +59,9 @@ function sleep(ms) {
   })
 
   function extractGroupUsers() {
-    const groupSubtitle = document.querySelector("[data-testid='chat-subtitle']")
-    const separator = groupSubtitle.textContent.includes('，') ? '，' : ','
-    let groupUsers = groupSubtitle.textContent.split(separator)
+    const groupSubtitle = document.querySelector('header .copyable-text').innerText
+    const separator = groupSubtitle.includes('，') ? '，' : ','
+    let groupUsers = groupSubtitle.split(separator)
     groupUsers = groupUsers.map((user) => user.trim())
 
     if (groupUsers.length === 1) {
@@ -90,7 +90,8 @@ function sleep(ms) {
 
   async function tagEveryone() {
     const groupUsers = extractGroupUsers()
-    const chatInput = document.querySelector("[data-testid='conversation-compose-box-input'] > p")
+    console.log(groupUsers)
+    const chatInput = document.querySelectorAll('.copyable-area')[1].querySelector("p");
 
     for (const user of groupUsers) {
 
@@ -124,7 +125,7 @@ function sleep(ms) {
   }
 
     function returnGroupUsers() {
-    const groupSubtitle = document.querySelector("[data-testid='chat-subtitle']")
+    const groupSubtitle = document.querySelector('header .copyable-text').innerText
     const separator = groupSubtitle.textContent.includes('，') ? '，' : ','
 
     let groupUsers = groupSubtitle.textContent.split(separator)
@@ -152,12 +153,12 @@ function sleep(ms) {
         ].includes(user) === false
     )
 
-    const chatInput = document.querySelector("[data-testid='conversation-compose-box-input'] > p")
+    const chatInput = document.querySelectorAll('.copyable-area')[1].querySelector("p");
     document.execCommand('insertText', false, groupUsers.map((user) => user.normalize('NFD').replace(/[\u0300-\u036f]/g, '')))
   }
 
   async function tagList() {
-    const chatInput = document.querySelector("[data-testid='conversation-compose-box-input'] > p")
+    const chatInput = document.querySelectorAll('.copyable-area')[1].querySelector("p");
     const userList = prompt("Informe aqui a lista de telefones que deseja marcar:", "Exemplo: +55 11 11111-1111, +55 11 11111-1111")
     const separator = userList.includes('，') ? '，' : ','
     let groupUsers = userList.split(separator)
