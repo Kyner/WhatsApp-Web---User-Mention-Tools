@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         User Mention Tools
 // @description  Function used to tag everyone in a group on WhatsApp
-// @version      1.1
+// @version      1.2
 // @author       Daniel Idalgo
 // @match        https://web.whatsapp.com/
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=web.whatsapp.com
@@ -126,9 +126,9 @@ function sleep(ms) {
 
     function returnGroupUsers() {
     const groupSubtitle = document.querySelector('header .copyable-text').innerText
-    const separator = groupSubtitle.textContent.includes('，') ? '，' : ','
+    const separator = groupSubtitle.includes('，') ? '，' : ','
 
-    let groupUsers = groupSubtitle.textContent.split(separator)
+    let groupUsers = groupSubtitle.split(separator)
     groupUsers = groupUsers.map((user) => user.trim())
 
     if (groupUsers.length === 1) {
